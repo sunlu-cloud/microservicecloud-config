@@ -1,0 +1,33 @@
+﻿#配置模式
+spring:
+  profiles:
+    active:
+     - dev
+
+---
+
+server:
+  port: 8201
+spring:
+  profiles: dev  #如果选举的策略是dev的 微服务的名字就叫下面这个 端口是8201
+  application:
+    name: microservicecloud-config-client
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-dev.com:7001/eureka/
+
+---
+
+server:
+  port: 8202
+spring:
+  profiles: test  #如果选举的策略是test的 微服务的名字就叫下面这个 端口是8202
+  application:
+    name: microservicecloud-config-client
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-test.com:7001/eureka/
